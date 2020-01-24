@@ -1,0 +1,31 @@
+Node Js dependency pkg installation 
+
+npm init - to create package.json file it will ask some info like name of project etc // project configuration
+npm install express --save (will save this dependency in package.json)
+npm install nano --save
+npm install body-parser 
+npm install errorhandler --save(For handling errors)
+npm install url --save
+npm install serve-favicon --save
+npm install logger --save 
+npm install json --save
+npm install express-session --save
+npm install -g nodemon  ---(use nodmon server.js) monitor any changes in server.js file (restart the server)
+npm install morgan --save (HTTP request logger middleware for node.js)
+npm install mongoose --save (db interaction)
+	to connect to db = mongoose.connect('mongodb://localhost:27017/test', {useNewUrlParser: true}); 
+
+
+Morgan: is another HTTP request logger middleware for Node.js. It simplifies the process of logging requests to your application. You might think of Morgan as a helper that collects logs from your server, such as your request logs. It saves developers time because they don’t have to manually create common logs. It standardizes and automatically creates request logs.
+
+Create app.js/server.js file
+-  import downloaded dependencies  
+
+calling/importing express.js
+
+
+app.use() // to use the imported moudule objects
+ex - app.use(morgn('dev'));
+
+
+
