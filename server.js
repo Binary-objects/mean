@@ -1,19 +1,24 @@
+
+/* packages */
+
 var express = require('express');    // import express module 
 var app = express();              //invoking express into a variable
 var port =  process.env.PORT || 8080; // use any port availabe or use 8080
 var morgan = require('morgan');    // HTTP request logger middleware for node.js 
 var mongoose = require('mongoose'); //mongodb
 var bodyParser = require('body-parser');
-var User = require('./app/models/user');
+var router   = express.Router(); // defining router
+var appRoutes  = require('./app/routes/api.js')(router);  //router obj
 
-
+/*Middleware*/
+app.use(morgan('dev'));
 app.use(bodyParser.json()); //for parsing
 app.use(bodyParser.urlencoded({extended : true})); //pass json data to url
+app.use( '/api',appRoutes);
 
-app.use(morgan('dev'));
 
+/*DataBase*/
 mongoose.set('useCreateIndex', true)
-
 mongoose.connect('mongodb://localhost:27017/tutorial',  {useUnifiedTopology: true, useNewUrlParser: true}, function(err){
 	if(err){
 		console.log("fail to connect to db" + err);
@@ -22,22 +27,12 @@ mongoose.connect('mongodb://localhost:27017/tutorial',  {useUnifiedTopology: tru
 	}
 });
 
-// app.get('/home', function(req, res){
-// 	res.send("Hello from home");
-// });
 
-app.post('/users', function(req, res){
-	//res.send('testing user routes');
-	var user = new User();
-	user.username  = req.body.username;
-	user.password  = req.body.password;
-	user.email     = req.body.email;
-	user.save();
+app.get();
 
-	res.send("User Created Successfully");
 
-});
 
+/*server port*/
 app.listen( port, function(){
 	console.log("Server is started");
 });
@@ -46,3 +41,4 @@ app.listen( port, function(){
 app.get('/', function(req, res){
 	res.send("Hell world");
 }); 
+

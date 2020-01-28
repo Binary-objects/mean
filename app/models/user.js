@@ -11,7 +11,7 @@ var userSchema  = new Schema({
 
 
 
-userSchema.pre('save', function(next) {   //pre middleware do this before save
+userSchema.pre('save', function(next) {   //pre middleware, do this before save
   var user = this; 
   bcrypt.hash(user.password ,null, null, function(err, hash) {
     // Store hash in your password DB.
