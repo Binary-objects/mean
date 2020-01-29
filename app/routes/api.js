@@ -26,5 +26,5 @@ module.exports = function(router){
 
 	});
 
-	return router;
+	return router;  // return the router obj to the server
 }
