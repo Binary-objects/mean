@@ -13,7 +13,7 @@ var path = require('path');
 
 /*for static file available on server use middleware express.static */
 
-app.use(express.static(__dirname + './public'));
+app.use(express.static(__dirname + '/public'));
 
 
 /*Middleware*/
